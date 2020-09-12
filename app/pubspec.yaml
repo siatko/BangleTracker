@@ -49,6 +49,13 @@ dependencies:
 
   settings_ui: ^0.4.0
 
+  flutter_background_geolocation: ^1.10.0+1
+
+  gpx: ^1.1.1
+
+  map_elevation: ^1.1.0
+
+
 
 dev_dependencies:
   flutter_test:
