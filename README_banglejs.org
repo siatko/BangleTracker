@@ -1,4 +1,8 @@
 * BangleTracker Bangle.js README
+** Relevant Bangle.js documentation
+   - [[https://www.espruino.com/Bangle.js+Development][Development]]
+   - [[https://www.espruino.com/Bangle.js+Data+Streaming][Data streaming]]
+   - [[https://www.espruino.com/Reference#software][Reference]]
 ** UI
 *** ASCII Drawing
     #+BEGIN_SRC text
