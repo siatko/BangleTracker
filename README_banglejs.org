@@ -27,7 +27,7 @@
      - Prints current BPM
        - Green: Relaxed
        - Orange: Intense
-       - Red: [[https://en.wikipedia.org/wiki/VO_max][VO2max]]
+       - Red: [[https://en.wikipedia.org/wiki/VO2_max][VO2max]]
 **** (4) Steps
      - Summary of recorded steps while activity is running. Color shows the
        current velocity
