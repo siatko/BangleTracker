@@ -29,6 +29,27 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.3
 
+  # state management
+  stacked: ^1.7.6
+  stacked_hooks: ^0.1.3
+  # navigation
+  auto_route:
+  stacked_services: ^0.5.4+3
+  # inversion of control
+  get_it: ^3.0.3
+  injectable:
+  flutter_hooks:
+  observable_ish:
+  
+  http: ^0.12.2
+  shared_preferences:
+
+  hive: ^1.4.4
+  hive_flutter: ^0.3.1
+
+  settings_ui: ^0.4.0
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
