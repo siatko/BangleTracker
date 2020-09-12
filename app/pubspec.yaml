@@ -51,7 +51,7 @@ dependencies:
 
   flutter_background_geolocation: ^1.10.0+1
 
-  gpx: ^1.1.1
+  gpx: ^1.0.0
 
   map_elevation: ^1.1.0
 
