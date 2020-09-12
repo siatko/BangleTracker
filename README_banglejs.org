@@ -1,0 +1,49 @@
+* BangleTracker Bangle.js README
+** UI
+*** ASCII Drawing
+    #+BEGIN_SRC text
+     +---------------------+
+     |Status (1)           |
+     +---------------------+
+     |                    #| B1 (6)
+     |   Activity Time (2) |
+     |                     |
+     |       BPM (3)      #| B2 (7)
+     |                     |
+     |      Steps (4)      |
+     |      (GPS) (5)     #| B3 (8)
+     +---------------------+
+    #+END_SRC
+*** Functionality
+**** (1) Status
+     - Indicates the current clock app <-> smartphone app connectivity status
+       - Green: Conncected
+       - Red: Disconnected
+**** (2) Activity Time
+     - Shows the observed time without paused times
+       - Green: Running
+       - Red: Paused
+**** (3) BPM - Beats per minute
+     - Prints current BPM
+       - Green: Relaxed
+       - Orange: Intense
+       - Red: [[https://en.wikipedia.org/wiki/VO_max][VO2max]]
+**** (4) Steps
+     - Summary of recorded steps while activity is running. Color shows the
+       current velocity
+       - Green: Slow
+       - Orange: Normal
+       - Red: High
+**** (5) GPS
+     - Shows whether the clock is connected to GPS satellites or not
+**** (6) Button 1
+     - Short press: Start activity
+     - Long press: Stops activity
+**** (7) Button 2
+     - Activity Mode: Pause/Resume activity
+     - Idle Mode: ?
+**** (8) Button 3
+     - Settings
+       - Self GPS on/off
+       - Display always on/off
+       - and so one
