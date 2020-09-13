@@ -4,6 +4,8 @@
    - [[https://www.espruino.com/Bangle.js+Data+Streaming][Data streaming]]
    - [[https://www.espruino.com/Reference#software][Reference]]
 ** UI
+*** Screenshot
+    [[./banglejs/res/screenshot.png]]
 *** ASCII Drawing
     #+BEGIN_SRC text
      +---------------------+
@@ -18,8 +20,6 @@
      |      (GPS) (5)     #| B3 (8)
      +---------------------+
     #+END_SRC
-*** Screenshot
-    [[./banglejs/res/screenshot.png]]
 *** Functionality
 **** (1) Status
      - Indicates the current clock app <-> smartphone app connectivity status
