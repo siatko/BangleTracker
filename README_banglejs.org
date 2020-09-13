@@ -27,21 +27,26 @@
        - Red: Disconnected
 **** (2) Activity Time
      - Shows the observed time without paused times
+       - White: Not started
        - Green: Running
        - Red: Paused
 **** (3) BPM - Beats per minute
      - Prints current BPM
+       - White: Not started
        - Green: Relaxed
        - Orange: Intense
        - Red: [[https://en.wikipedia.org/wiki/VO2_max][VO2max]]
 **** (4) Steps
      - Summary of recorded steps while activity is running. Color shows the
        current velocity
+       - White: Not started
        - Green: Slow
        - Orange: Normal
        - Red: High
 **** (5) GPS
-     - Shows whether the clock is connected to GPS satellites or not
+     - Shows whether the clock is connected to GPS satellites or not as dot
+       - Red: Not connected
+       - Green: Connected
 **** (6) Button 1
      - Short press: Start activity
      - Long press: Stops activity
@@ -49,7 +54,7 @@
      - Activity Mode: Pause/Resume activity
      - Idle Mode: ?
 **** (8) Button 3
-     - Settings
-       - Self GPS on/off
-       - Display always on/off
+     - Change faces
+       - Progress (timer, bpm, steps, gps)
+       - Time
        - and so one
