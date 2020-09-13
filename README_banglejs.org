@@ -18,6 +18,8 @@
      |      (GPS) (5)     #| B3 (8)
      +---------------------+
     #+END_SRC
+*** Screenshot
+    [[.banglejs/res/screenshot.png]]
 *** Functionality
 **** (1) Status
      - Indicates the current clock app <-> smartphone app connectivity status
