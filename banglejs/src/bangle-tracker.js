@@ -66,11 +66,31 @@ function drawLines() {
   g.drawLine(0, 145, g.getWidth(), 145);
 }
 
+function getAvg(values) {
+  const total = values.reduce((a, b) => a + b, 0);
+  return total / values.length;
+}
+
+// Sensors
+Bangle.setHRMPower(1);
+
 // Draw
 g.clear();
 drawTimer();
+hrtArr = [];
+Bangle.on('HRM', function(hrm) {
+  if(hrm.confidence > 49 && hrm.bpm != 200) {
+    hrtArr.push(hrm.bpm)
+  }
+  if(hrtArr.length > 4) {
+    drawBpm('000');
+    drawBpm(parseInt(getAvg(hrtArr)));
+    hrtArr.shift();
+  }
+  console.log(hrtArr);
+});
 drawBpm('000');
 drawSteps('00000');
 drawGpsStatus(true);
 drawLines();
-var secondInterval = setInterval(drawTime, 1000);
+setInterval(drawTimer, 1000);
