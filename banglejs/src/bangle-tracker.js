@@ -19,7 +19,7 @@ require("Font7x11Numeric7Seg").add(Graphics);
 
 function drawTimer() {
   // Position
-  var X = screen.hcenter + 107, Y = screen.vtop + 10;
+  var posX = screen.hcenter + 107, posY = screen.vtop + 10;
   // Time
   var hour = '00';
   var minute = '00';
@@ -29,26 +29,26 @@ function drawTimer() {
   g.setFont("7x11Numeric7Seg", 4);
   g.setFontAlign(1, 1);
   g.setColor(1, 1, 1);
-  g.drawString(time, X, Y, true);
+  g.drawString(time, posX, posY, true);
 
 }
 
 function drawBpm(bpmValue) {
-  var X = screen.hcenter + 25, Y = screen.vcenter + 10;
+  var posX = screen.hcenter + 25, posY = screen.vcenter + 10;
   g.reset();
   g.setFont("7x11Numeric7Seg", 2);
   g.setFontAlign(1, 1);
   g.setColor(1, 1, 1);
-  g.drawString(bpmValue, X, Y, true);
+  g.drawString(bpmValue, posX, posY, true);
 }
 
 function drawSteps(stepValue) {
-  var X = screen.hcenter + 35, Y = screen.vbottom - 10;
+  var posX = screen.hcenter + 35, posY = screen.vbottom - 10;
   g.reset();
   g.setFont("7x11Numeric7Seg", 2);
   g.setFontAlign(1, 1);
   g.setColor(1, 1, 1);
-  g.drawString(stepValue, X, Y, true);
+  g.drawString(stepValue, posX, posY, true);
 }
 
 function drawGpsStatus(connected) {
@@ -77,20 +77,55 @@ Bangle.setHRMPower(1);
 // Draw
 g.clear();
 drawTimer();
+
 hrtArr = [];
 Bangle.on('HRM', function(hrm) {
   if(hrm.confidence > 49 && hrm.bpm != 200) {
-    hrtArr.push(hrm.bpm)
+    hrtArr.push(hrm.bpm);
+    wasMeasured = hrm.bpm;
   }
-  if(hrtArr.length > 4) {
+  if(hrtArr.length > 5) {
     drawBpm('000');
     drawBpm(parseInt(getAvg(hrtArr)));
+    NRF.updateServices({
+      0x180D: { // heart_rate
+        0x2A37: { // heart_rate_measurement
+          notify: true,
+          value : [0x06, parseInt(getAvg(hrtArr))],
+        }
+      }
+    });
     hrtArr.shift();
   }
+  // Debug
+  console.log("%: " + hrm.confidence);
+  console.log("b: " + hrm.bpm);
   console.log(hrtArr);
+  console.log("=========================")
 });
+
+setInterval(drawTimer, 1000);
+
+// First Draw Bpm and Steps
 drawBpm('000');
 drawSteps('00000');
+
 drawGpsStatus(true);
 drawLines();
-setInterval(drawTimer, 1000);
+
+
+Bangle.on('step', function (steps){
+  drawSteps(steps);
+})
+
+// Services
+NRF.setServices({
+  0x180D: { // heart_rate
+    0x2A37: { // heart_rate_measurement
+      notify: true,
+      value : [0x06, 0],
+    }
+  }
+}, { advertise: [ '180D' ] });
+
+// Intervals
