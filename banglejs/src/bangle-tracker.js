@@ -42,11 +42,11 @@ function drawClock() {
   g.reset();
   g.setFont("7x11Numeric7Seg", 4);
   g.setFontAlign(1, 1);
-  g.setColor(1, 0.65, 1);
+  g.setColor(1, 1, 1);
   g.drawString(time, posX, posY, true);
   g.setFont("7x11Numeric7Seg", 2);
   g.setFontAlign(1, 1);
-  g.setColor(1, 0.65, 1);
+  g.setColor(1, 1, 1);
   g.drawString(("0" + d.getSeconds()).substr(-2), posX +30, posY, true);
 
 }
@@ -63,8 +63,14 @@ function drawDate() {
   g.reset();
   g.setFont("7x11Numeric7Seg", 2);
   g.setFontAlign(1, 1);
-  g.setColor(1, 1, 1);
+  g.setColor(1, .65, 1);
   g.drawString(time, posX, posY, true);
+}
+
+function draw() {
+  drawTimer();
+  drawClock();
+  drawDate();
 }
 
 function drawBpm(bpmValue) {
@@ -91,7 +97,7 @@ function drawHrmStatus(connected) {
   } else {
     g.setColor(1, 0, 0);
   }
-  g.fillCircle(screen.hcenter - 85, screen.vcenter + 30, 7);
+  g.fillCircle(screen.hcenter - 90, screen.vcenter + 30, 7);
 }
 
 function getAvg(values) {
@@ -103,9 +109,7 @@ function getAvg(values) {
 
 // Draw
 g.clear();
-drawTimer();
-drawClock();
-drawDate();
+draw();
 
 hrtArr = [];
 Bangle.on('HRM', function(hrm) {
@@ -155,6 +159,7 @@ NRF.setServices({
   }
 }, { advertise: [ '180D' ] });
 
+// Buttons
 var started = false;
 setWatch(function() { // Reset
   if(!started) {
@@ -171,4 +176,6 @@ setWatch(function() { // Reset
 
 Bangle.loadWidgets();
 Bangle.drawWidgets();
-setInterval(drawClock, 1000);
+
+// Intervals
+setInterval(draw, 1000);
